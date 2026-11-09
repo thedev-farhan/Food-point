@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Park Restaurant | فود بارك | Kerala & Indian Cuisine, Sharjah</title>
+  <meta name="description" content="Food Park Restaurant – Authentic Kerala & Indian cuisine in Hay Al Qasimiah, Sharjah. Fish Biryani, Shawarma, Ghee Roast, Masala Dosa. Open Daily 7 AM – 2 AM. Dine-in, Takeout & Delivery. AED 1–50." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            gold: { 100: '#fef3c7', 400: '#f59e0b', 500: '#d97706', 600: '#b45309', 700: '#92400e', 900: '#78350f' },
+            brand: { red: '#dc2626', deep: '#991b1b' },
+            cream: { 50: '#fdfbf7', 100: '#faf6ef', 200: '#f3ecdf', 300: '#e8dcc5' },
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    :root {
+      --gold: #d97706;
+      --gold-deep: #b45309;
+      --red: #c2352b;
+      --ink: #26221b;
+      --card: #ffffff;
+      --border: #eae2d3;
+      --shadow: 0 14px 36px -14px rgba(120, 85, 30, 0.18);
+      --glow: rgba(217, 119, 6, 0.22);
+    }
+    html { scroll-behavior: smooth; }
+    body { background-color: #faf6ef; color: var(--ink); overflow-x: hidden; }
+
+    /* Soft warm "lighting" — gentle amber glows that are easy on the eyes */
+    .ambient {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(560px 340px at 12% -4%, rgba(245, 158, 11, 0.10), transparent 65%),
+        radial-gradient(640px 400px at 96% 26%, rgba(220, 38, 38, 0.05), transparent 60%),
+        radial-gradient(760px 460px at 50% 108%, rgba(245, 158, 11, 0.08), transparent 62%);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .text-gold { color: var(--gold-deep); }
+    .bg-gold { background-color: var(--gold); }
+    .border-gold { border-color: var(--gold); }
+    .shadow-gold { box-shadow: 0 10px 26px -8px var(--glow); }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+      color: #fff; transition: all 0.3s ease;
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -8px rgba(217, 119, 6, 0.45); }
+
+    .btn-outline {
+      border: 1px solid #ddd0b8; background: #fff; color: #3f3a30;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold-deep); transform: translateY(-2px); }
+
+    .nav-link { position: relative; transition: color 0.3s; }
+    .nav-link::after { content:''; position:absolute; bottom:-6px; left:0; width:0; height:2px; background:var(--gold); border-radius:2px; transition:width 0.3s; }
+    .nav-link:hover::after { width: 100%; }
+
+    .menu-card { transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s; overflow: hidden; }
+    .menu-card:hover { transform: translateY(-6px); border-color: rgba(217, 119, 6, 0.5); box-shadow: 0 22px 44px -14px rgba(180, 83, 9, 0.28); }
+    .menu-card img { width:100%; height:100%; object-fit: cover; display:block; transition: transform 0.5s; }
+    .menu-card:hover img { transform: scale(1.06); }
+
+    .star-fill { color: #f59e0b; }
+
+    .tab-btn { transition: all .25s; border: 1px solid transparent; }
+    .tab-btn.tab-active { background: var(--gold-deep); color: #fff; border-color: var(--gold-deep); box-shadow: 0 8px 20px -6px var(--glow); }
+
+    .marquee { overflow: hidden; white-space: nowrap; }
+    .marquee-content { display: inline-block; animation: marquee 22s linear infinite; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    .glass-input {
+      background: #fbf8f1;
+      border: 1px solid #e5dccb;
+      color: var(--ink);
+      transition: all 0.3s;
+    }
+    .glass-input::placeholder { color: #a39a89; }
+    .glass-input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.18); background: #fff; }
+
+    /* Arabic text: NO uppercase transform, NO italic, NO letter-spacing — those break Arabic shaping */
+    .arabic { direction: rtl; unicode-bidi: isolate; font-family: 'Segoe UI','Noto Naskh Arabic','Amiri',serif; }
+
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 999px;
+      background: #fff; border: 1px solid #eae2d3;
+      font-size: 0.85rem; color: #57503f; transition: all 0.3s;
+      box-shadow: 0 2px 10px -4px rgba(120, 85, 30, 0.12);
+    }
+    .chip i { color: var(--gold-deep); }
+    .chip:hover { border-color: var(--gold); color: var(--gold-deep); }
+
+    .gradient-text { background: linear-gradient(120deg, #b45309 10%, #c2352b 90%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .pill-open {
+      background: #fff; border: 1px solid #d7ead8; color: #15803d;
+      box-shadow: 0 6px 18px -6px rgba(21, 128, 61, 0.25);
+    }
+
+    /* Missing-image placeholder (only if a file is renamed/missing) */
+    .img-missing {
+      background: repeating-linear-gradient(45deg, #f6efe2, #f6efe2 10px, #efe6d4 10px, #efe6d4 20px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+      color: #8a8071; text-align: center; padding: 16px; width: 100%; height: 100%;
+    }
+    .img-missing .name { font-weight: 800; color: var(--gold-deep); font-size: 0.85rem; }
+    .img-missing .file { font-size: 0.7rem; opacity: 0.85; }
+  </style>
+</head>
+<body class="antialiased selection:bg-gold selection:text-white">
+  <div class="ambient"></div>
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-xl border-b border-[#eee7d8]" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='#'">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center shadow-gold ring-2 ring-white">
+          <span class="text-white font-black text-xl tracking-tighter">FP</span>
+        </div>
+        <div>
+          <h1 class="font-serif font-bold text-lg text-slate-900 tracking-tight leading-none">Food Park <span class="text-gold-600">Restaurant</span></h1>
+          <div class="arabic text-[10px] text-gold-600 font-semibold mt-1" dir="rtl">فود بارك</div>
+        </div>
+      </div>
+
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
+        <a href="#overview" class="nav-link hover:text-gold-700">Overview</a>
+        <a href="#menu" class="nav-link hover:text-gold-700">Menu</a>
+        <a href="#reviews" class="nav-link hover:text-gold-700">Reviews</a>
+        <a href="#about" class="nav-link hover:text-gold-700">About</a>
+        <a href="#contact" class="nav-link hover:text-gold-700">Contact</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="tel:+97165738464" class="hidden sm:flex items-center gap-2 px-5 py-2.5 whitespace-nowrap text-sm font-semibold text-white bg-gradient-to-r from-gold-500 to-gold-600 rounded-xl shadow-gold hover:from-gold-600 hover:to-gold-700 transition">
+          <i class="fa-solid fa-phone"></i> +971 6 573 8464
+        </a>
+        <button class="md:hidden text-slate-700" id="mobile-menu-btn" aria-label="Open menu">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur border-t border-[#eee7d8] p-4 space-y-3">
+      <a href="#overview" class="block py-2.5 text-sm text-slate-700 hover:text-gold-700 transition">Overview</a>
+      <a href="#menu" class="block py-2.5 text-sm text-slate-700 hover:text-gold-700 transition">Menu</a>
+      <a href="#reviews" class="block py-2.5 text-sm text-slate-700 hover:text-gold-700 transition">Reviews</a>
+      <a href="#about" class="block py-2.5 text-sm text-slate-700 hover:text-gold-700 transition">About</a>
+      <a href="#contact" class="block py-2.5 text-sm text-slate-700 hover:text-gold-700 transition">Contact</a>
+      <a href="tel:+97165738464" class="block py-3 text-center btn-gold text-sm font-semibold rounded-xl shadow-gold">Call Now</a>
+    </div>
+  </nav>
+
+  <!-- HERO / LANDING -->
+  <header class="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden">
+    <!-- FULL-WIDTH SHOP PHOTO BACKGROUND (behind hero content) -->
+    <div class="absolute inset-0 z-0">
+      <img src="shop.jpg" alt="Food Park Restaurant shop"
+           class="w-full h-full object-cover" loading="eager" decoding="async"
+           onerror="this.style.display='none';" />
+      <!-- soft cream overlay so text stays readable, image still shows through -->
+      <div class="absolute inset-0" style="background:linear-gradient(90deg, rgba(250,246,239,0.97) 0%, rgba(250,246,239,0.93) 40%, rgba(250,246,239,0.55) 65%, rgba(250,246,239,0.15) 100%);"></div>
+      <div class="absolute inset-x-0 bottom-0 h-40" style="background:linear-gradient(180deg, rgba(250,246,239,0) 0%, #faf6ef 100%);"></div>
+      <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(560px 340px at 12% -4%, rgba(245,158,11,0.10), transparent 65%);"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-[1.05fr,0.95fr] gap-12 items-center">
+
+        <!-- Left: text -->
+        <div>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-black uppercase tracking-wider mb-7 shadow-gold"
+               style="background:#fff; border:1px solid #f3ddb0; color:#b45309;">
+            <i class="fa-solid fa-star text-[9px]" style="color:#f59e0b"></i>
+            <span>3.9 · 177 Reviews</span>
+          </div>
+
+          <h1 class="font-serif text-5xl md:text-6xl font-black text-slate-900 leading-none mb-3">
+            Food Park
+          </h1>
+          <div class="arabic gradient-text text-4xl md:text-5xl font-black mb-7 text-left" dir="rtl">فود بارك</div>
+
+          <p class="text-slate-600 text-lg mb-6 max-w-xl leading-relaxed">
+            Authentic Kerala &amp; Indian flavors in Hay Al Qasimiah, Sharjah. Fish Biryani, Ghee Roast, Shawarma and more — served hot, spicy, and late-night ready.
+          </p>
+
+          <!-- ⏰ TIMINGS — clearly visible here -->
+          <div class="flex flex-wrap gap-3 mb-9">
+            <span class="chip" style="border-color:#f3ddaa; color:#92400e;"><i class="fa-solid fa-clock"></i> Open Daily · 7:00 AM – 2:00 AM</span>
+            <span class="chip"><i class="fa-solid fa-utensils"></i> Dine-in</span>
+            <span class="chip"><i class="fa-solid fa-bag-shopping"></i> Takeout</span>
+            <span class="chip"><i class="fa-solid fa-truck-fast"></i> Delivery</span>
+            <span class="chip"><i class="fa-solid fa-indian-rupee-sign"></i> AED 1–50</span>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="#menu" class="btn-gold px-9 py-4 rounded-2xl font-bold text-lg shadow-gold flex items-center gap-3">
+              <i class="fa-solid fa-burger"></i> View Full Menu
+            </a>
+            <a href="#contact" class="btn-outline px-9 py-4 rounded-2xl font-bold text-lg flex items-center gap-3">
+              <i class="fa-solid fa-location-dot"></i> Get Directions
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: quick info glass card (floating over the shop background) -->
+        <div class="lg:justify-self-end w-full max-w-md">
+          <div class="rounded-[2rem] bg-white/85 backdrop-blur-xl border border-white shadow-2xl p-7 shadow-gold">
+            <div class="flex items-center justify-between mb-5">
+              <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl" style="background:#f0fdf4; border:1px solid #d7ead8;">
+                <div class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
+                <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Open Now</span>
+              </div>
+              <div class="flex items-center gap-1.5 text-sm font-bold text-slate-800">
+                <i class="fa-solid fa-star text-xs" style="color:#f59e0b"></i> 3.9 · 177
+              </div>
+            </div>
+
+            <div class="text-[11px] font-black uppercase tracking-widest text-gold-600 mb-2">Timings</div>
+            <div class="space-y-1.5 text-sm text-slate-700">
+              <div class="flex justify-between gap-3"><span>Monday – Friday</span><span class="font-semibold">7:00 AM – 2:00 AM</span></div>
+              <div class="flex justify-between gap-3"><span>Saturday</span><span class="font-semibold">7:00 AM – 1:30 AM</span></div>
+              <div class="flex justify-between gap-3"><span>Sunday</span><span class="font-semibold">6:30 AM – 2:00 AM</span></div>
+            </div>
+
+            <div class="h-px bg-[#eee7d8] my-5"></div>
+
+            <a href="tel:+97165738464" class="btn-gold px-6 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2.5 shadow-gold w-full">
+              <i class="fa-solid fa-phone"></i> Call &amp; Order · +971 6 573 8464
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quick Facts Strip (Timings included) -->
+  <section class="py-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="card rounded-[1.6rem] px-6 py-7">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+          <div>
+            <div class="text-gold-600 text-[10px] font-black uppercase tracking-widest mb-1">Timings</div>
+            <div class="text-sm font-semibold text-slate-800 leading-tight">Daily 7:00 AM – 2:00 AM</div>
+            <div class="text-[11px] text-slate-500 mt-1">Late-night food available</div>
+          </div>
+          <div>
+            <div class="text-gold-600 text-[10px] font-black uppercase tracking-widest mb-1">Location</div>
+            <div class="text-sm text-slate-700 leading-tight">Bu Danig · Hay Al Qasimiah<br>Sharjah, UAE</div>
+          </div>
+          <div>
+            <div class="text-gold-600 text-[10px] font-black uppercase tracking-widest mb-1">Phone</div>
+            <div class="text-sm text-slate-700"><a href="tel:+97165738464" class="font-semibold hover:text-gold-600 transition">+971 6 573 8464</a></div>
+          </div>
+          <div>
+            <div class="text-gold-600 text-[10px] font-black uppercase tracking-widest mb-1">Price Range</div>
+            <div class="text-sm text-slate-700">AED 1–50 / person</div>
+          </div>
+          <div>
+            <div class="text-gold-600 text-[10px] font-black uppercase tracking-widest mb-1">Cuisine</div>
+            <div class="text-sm text-slate-700">Kerala · Indian · Chinese</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" class="py-20 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="font-serif text-4xl md:text-5xl font-black text-slate-900 mb-4">Menu &amp; Highlights</h2>
+        <div class="w-24 h-1.5 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full shadow-gold"></div>
+        <p class="mt-5 text-slate-500 max-w-2xl mx-auto">Full Kerala, Indian &amp; Chinese menu — everything under AED 50.</p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-2 mb-12">
+        <button class="tab-btn tab-active px-7 py-2.5 rounded-full bg-white text-slate-700 font-semibold text-sm card" data-cat="all">All</button>
+        <button class="tab-btn px-7 py-2.5 rounded-full text-slate-600 hover:text-gold-700 hover:bg-white transition text-sm font-medium" data-cat="kerala">Kerala</button>
+        <button class="tab-btn px-7 py-2.5 rounded-full text-slate-600 hover:text-gold-700 hover:bg-white transition text-sm font-medium" data-cat="indian">Indian</button>
+        <button class="tab-btn px-7 py-2.5 rounded-full text-slate-600 hover:text-gold-700 hover:bg-white transition text-sm font-medium" data-cat="chinese">Chinese</button>
+        <button class="tab-btn px-7 py-2.5 rounded-full text-slate-600 hover:text-gold-700 hover:bg-white transition text-sm font-medium" data-cat="breakfast">Breakfast</button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-grid"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="py-6 border-y border-[#eee7d8] bg-white/60 relative z-10">
+    <div class="marquee">
+      <div class="marquee-content">
+        <span class="inline-block px-5 py-3 text-slate-500 font-medium border-r border-[#eee7d8]">Fish Biryani · Shawarma · Beef Curry · Ghee Roast · Masala Dosa · Set Dosa · Appam Beef · Kerala Chilli Chicken · Chicken Charcoal · Chicken Briyani · Mango Juice · Great Tea Selection · Late-night food · Quick bite&nbsp;&nbsp;</span>
+        <span class="inline-block px-5 py-3 text-slate-500 font-medium border-r border-[#eee7d8]">Fish Biryani · Shawarma · Beef Curry · Ghee Roast · Masala Dosa · Set Dosa · Appam Beef · Kerala Chilli Chicken · Chicken Charcoal · Chicken Briyani · Mango Juice · Great Tea Selection · Late-night food · Quick bite&nbsp;&nbsp;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="py-20 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2">
+          <div class="card p-8 lg:p-10 rounded-[2rem]">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-serif text-2xl font-bold text-slate-900">Popular Times</h3>
+              <span class="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full" style="background:#fef3c7; color:#92400e; border:1px solid #f3ddb0;">Monday · Live</span>
+            </div>
+            <p class="text-slate-500 text-sm mb-7">Less busy than usual</p>
+            <div class="h-32 flex items-end gap-2">
+              <div class="flex-1 rounded-t-md" style="height:18%; background:rgba(245,158,11,0.18);"></div>
+              <div class="flex-1 rounded-t-md" style="height:32%; background:rgba(245,158,11,0.30);"></div>
+              <div class="flex-1 rounded-t-md" style="height:55%; background:rgba(245,158,11,0.48);"></div>
+              <div class="flex-1 rounded-t-md" style="height:75%; background:rgba(217,119,6,0.62);"></div>
+              <div class="flex-1 rounded-t-md" style="height:95%; background:rgba(180,83,9,0.80);"></div>
+              <div class="flex-1 rounded-t-md" style="height:60%; background:rgba(217,119,6,0.55);"></div>
+              <div class="flex-1 rounded-t-md" style="height:42%; background:rgba(245,158,11,0.42);"></div>
+              <div class="flex-1 rounded-t-md" style="height:28%; background:rgba(245,158,11,0.30);"></div>
+              <div class="flex-1 rounded-t-md" style="height:15%; background:rgba(245,158,11,0.18);"></div>
+              <div class="flex-1 rounded-t-md" style="height:22%; background:rgba(245,158,11,0.24);"></div>
+              <div class="flex-1 rounded-t-md" style="height:40%; background:rgba(217,119,6,0.42);"></div>
+            </div>
+            <div class="flex justify-between text-[10px] text-slate-400 mt-3 font-medium uppercase">
+              <span>6a</span><span>9a</span><span>12p</span><span>3p</span><span>6p</span><span>9p</span><span>12a</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card p-8 rounded-[2rem] space-y-6">
+            <div>
+              <h3 class="font-serif text-xl font-bold text-slate-900 mb-3">Service Options</h3>
+              <div class="space-y-2.5">
+                <div class="flex items-center gap-3"><span class="text-green-600"><i class="fa-solid fa-check"></i></span><span class="text-sm text-slate-700">Dine-in</span></div>
+                <div class="flex items-center gap-3"><span class="text-green-600"><i class="fa-solid fa-check"></i></span><span class="text-sm text-slate-700">Takeout</span></div>
+                <div class="flex items-center gap-3"><span class="text-green-600"><i class="fa-solid fa-check"></i></span><span class="text-sm text-slate-700">No-contact delivery</span></div>
+                <div class="flex items-center gap-3"><span class="text-green-600"><i class="fa-solid fa-check"></i></span><span class="text-sm text-slate-700">Delivery</span></div>
+              </div>
+            </div>
+            <div>
+              <h3 class="font-serif text-xl font-bold text-slate-900 mb-3">Highlights</h3>
+              <div class="flex items-center gap-3"><i class="fa-solid fa-mug-hot text-gold-600"></i><span class="text-sm text-slate-700">Great tea selection</span></div>
+            </div>
+            <div>
+              <h3 class="font-serif text-xl font-bold text-slate-900 mb-3">Offerings</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="chip text-xs">Coffee</span>
+                <span class="chip text-xs">Late-night food</span>
+                <span class="chip text-xs">Quick bite</span>
+                <span class="chip text-xs">Small plates</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="font-serif text-xl font-bold text-slate-900 mb-3">Payments</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="chip text-xs">Credit cards</span>
+                <span class="chip text-xs">Debit cards</span>
+                <span class="chip text-xs">NFC mobile</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="py-20 relative z-10" style="background:linear-gradient(180deg, rgba(250,246,239,0) 0%, rgba(243,236,223,0.55) 50%, rgba(250,246,239,0) 100%);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <h2 class="font-serif text-4xl md:text-5xl font-black text-slate-900 mb-2">Reviews</h2>
+        <p class="text-slate-500">3.9 · 177 Google reviews</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6" id="reviews-grid"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-20 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <div class="text-gold-600 text-[11px] font-black uppercase tracking-widest mb-4">About Food Park</div>
+          <h2 class="font-serif text-3xl md:text-4xl font-black text-slate-900 mb-6">More than a meal — a Kerala experience.</h2>
+          <p class="text-slate-600 leading-relaxed text-lg mb-7">
+            Food Park Restaurant brings the authentic taste of Kerala to Hay Al Qasimiah, Sharjah. We serve Indian and Chinese cuisine with generous portions, a great tea selection, and a casual, quiet atmosphere ideal for solo dining, groups, and families.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <span class="chip"><i class="fa-solid fa-coffee"></i> Breakfast · Lunch · Dinner · Dessert</span>
+            <span class="chip"><i class="fa-solid fa-clock"></i> Open till 2:00 AM</span>
+            <span class="chip"><i class="fa-solid fa-utensils"></i> Table service</span>
+            <span class="chip"><i class="fa-solid fa-wheelchair"></i> Wheelchair accessible</span>
+            <span class="chip"><i class="fa-solid fa-child"></i> Good for kids</span>
+            <span class="chip"><i class="fa-solid fa-parking"></i> Paid street parking</span>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="relative h-[420px] rounded-[2rem] card overflow-hidden border-2 border-[#f1e4c8]">
+            <img src="interior.jpg" alt="Food Park Restaurant interior"
+                 class="w-full h-full object-cover" loading="lazy" decoding="async"
+                 onerror="this.style.display='none'; document.getElementById('bf-fallback').style.display='flex';" />
+            <div id="bf-fallback" class="img-missing" style="display:none;">
+              <i class="fa-solid fa-utensils text-3xl text-gold-600"></i>
+              <div class="name">Interior Photo</div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-full p-8 pointer-events-none">
+              <h3 class="text-2xl font-black text-white mb-1">Inside Food Park</h3>
+              <p class="text-gold-400 text-sm font-bold uppercase tracking-wider">Family seating · Casual &amp; quiet</p>
+            </div>
+          </div>
+          <div class="absolute -bottom-5 -left-5 w-48 h-48 bg-gold-400/20 rounded-full blur-[80px] pointer-events-none"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATION -->
+  <section class="py-20 relative z-10" style="background:radial-gradient(620px 300px at 50% 40%, rgba(245,158,11,0.10), transparent 70%);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="font-serif text-3xl md:text-4xl font-black text-slate-900 mb-3">Reserve Your Table</h2>
+        <p class="text-slate-500">Family seating · Outdoor seating · Groups welcome · Open till 2:00 AM</p>
+      </div>
+
+      <div class="card rounded-[2rem] p-8 md:p-10 border-2 border-[#f1e4c8]">
+        <form onsubmit="event.preventDefault(); alert('Thank you! Your reservation request has been received. We will confirm shortly via call.')" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
+            <input type="text" placeholder="John Doe" class="glass-input w-full px-5 py-3.5 rounded-xl">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Phone</label>
+            <input type="tel" placeholder="+971 50 123 4567" class="glass-input w-full px-5 py-3.5 rounded-xl">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Guests</label>
+            <select class="glass-input w-full px-5 py-3.5 rounded-xl">
+              <option>1 Guest</option><option>2 Guests</option><option>3 Guests</option><option>4 Guests</option><option>5+ Guests</option>
+            </select>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium text-slate-700 mb-2">Date &amp; Time</label>
+            <div class="flex gap-3">
+              <input type="date" class="glass-input px-5 py-3.5 rounded-xl flex-1">
+              <input type="time" class="glass-input px-5 py-3.5 rounded-xl w-44">
+            </div>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium text-slate-700 mb-2">Special Requests</label>
+            <textarea rows="3" placeholder="Table preference, allergies, occasion..." class="glass-input w-full px-5 py-3.5 rounded-xl"></textarea>
+          </div>
+          <div class="md:col-span-4">
+            <button type="submit" class="btn-gold px-8 py-4 rounded-2xl font-bold text-lg shadow-gold w-full">Book Now</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20 border-t border-[#eee7d8] relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10">
+        <div class="card p-10 rounded-[2rem]">
+          <h3 class="font-serif text-2xl font-bold text-slate-900 mb-7">Visit Us</h3>
+          <div class="space-y-7">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-gold-100 text-gold-600 flex items-center justify-center shrink-0 border border-[#f3ddb0]"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <div class="font-semibold text-slate-900">Food Park Restaurant</div>
+                <div class="text-slate-500 text-sm">8CV2+X6M · Bu Danig · Hay Al Qasimiah · Sharjah · United Arab Emirates</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-gold-100 text-gold-600 flex items-center justify-center shrink-0 border border-[#f3ddb0]"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <div class="font-semibold text-slate-900"><a href="tel:+97165738464" class="hover:text-gold-600 transition">+971 6 573 8464</a></div>
+                <div class="text-slate-500 text-sm">Call for orders &amp; reservations</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-gold-100 text-gold-600 flex items-center justify-center shrink-0 border border-[#f3ddb0]"><i class="fa-solid fa-clock"></i></div>
+              <div>
+                <div class="font-semibold text-slate-900">Timings</div>
+                <div class="text-slate-600 text-sm space-y-0.5 mt-1">
+                  <div class="font-semibold text-green-700 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500 inline-block animate-pulse"></span> Open Now</div>
+                  <div>Monday – Friday · 7:00 AM – 2:00 AM</div>
+                  <div>Saturday · 7:00 AM – 1:30 AM</div>
+                  <div>Sunday · 6:30 AM – 2:00 AM</div>
+                </div>
+                <div class="text-slate-500 text-sm mt-1.5">Breakfast · Brunch · Lunch · Dinner · Dessert</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-gold-100 text-gold-600 flex items-center justify-center shrink-0 border border-[#f3ddb0]"><i class="fa-solid fa-parking"></i></div>
+              <div>
+                <div class="font-semibold text-slate-900">Paid street parking</div>
+                <div class="text-slate-500 text-sm">Wheelchair accessible entrance · restroom · seating</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-10 rounded-[2rem] h-full flex flex-col justify-center">
+          <h3 class="font-serif text-2xl font-bold text-slate-900 mb-7">Send us a message</h3>
+          <form class="space-y-4">
+            <input type="text" placeholder="Name" class="glass-input w-full px-5 py-3.5 rounded-xl">
+            <input type="email" placeholder="Email" class="glass-input w-full px-5 py-3.5 rounded-xl">
+            <textarea rows="4" placeholder="Message" class="glass-input w-full px-5 py-3.5 rounded-xl"></textarea>
+            <button type="submit" class="btn-gold px-8 py-3.5 rounded-2xl font-bold w-full shadow-gold">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 border-t-4 border-gold-500/70 py-14 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-white font-black shadow-gold">FP</div>
+        <div>
+          <div class="text-white font-bold">Food Park Restaurant</div>
+          <div class="text-[11px] text-slate-400">Open Daily · 7:00 AM – 2:00 AM · Bu Danig, Sharjah</div>
+          <div class="text-[10px] text-slate-500 arabic mt-0.5"><span dir="rtl">فود بارك</span> · Kerala Restaurant, Sharjah</div>
+        </div>
+      </div>
+      <div class="flex gap-6 text-slate-400 text-sm">
+        <a href="#menu" class="hover:text-gold-400 transition">Menu</a>
+        <a href="#reviews" class="hover:text-gold-400 transition">Reviews</a>
+        <a href="#about" class="hover:text-gold-400 transition">About</a>
+        <a href="#contact" class="hover:text-gold-400 transition">Contact</a>
+      </div>
+      <div class="flex gap-4 text-slate-400">
+        <a href="#" class="hover:text-gold-400 transition text-lg"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="hover:text-gold-400 transition text-lg"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="hover:text-gold-400 transition text-lg"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-6 border-t border-slate-800">
+      <p class="text-xs text-slate-500 text-center">© 2026 Food Park Restaurant. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    /* ==================== MENU (ALWAYS VISIBLE — NO HIDDEN ANIMATION) ==================== */
+    /* Images = REAL photos taken from Food Park Restaurant's own Google Maps gallery */
+    const menuItems = [
+      { name:"Fish Biryani", price:"AED 25", cat:["all","indian"], img:"biryani.jpg", desc:"Fragrant basmati with fresh fish and Kerala spices" },
+      { name:"Chicken Briyani", price:"AED 24", cat:["all","indian"], img:"biryani.jpg", desc:"Classic dum chicken biryani" },
+      { name:"Beef Curry", price:"AED 30", cat:["all","kerala"], img:"meal.jpg", desc:"Slow-cooked Kerala beef curry with coconut" },
+      { name:"Kerala Meals", price:"AED 20", cat:["all","kerala"], img:"meal.jpg", desc:"Full banana-leaf meal with rice and curries" },
+      { name:"Shawarma", price:"AED 15", cat:["all","chinese"], img:"menucard.jpg", desc:"Grilled chicken wrap with garlic sauce" },
+      { name:"Kerala Chilli Chicken", price:"AED 26", cat:["all","kerala","chinese"], img:"noodles.jpg", desc:"Spicy Indo-Kerala chilli chicken" },
+      { name:"Chicken Noodles", price:"AED 22", cat:["all","chinese"], img:"noodles.jpg", desc:"Wok-tossed noodles with egg and veggies" },
+      { name:"Chicken Fried Rice", price:"AED 20", cat:["all","chinese"], img:"drink.jpg", desc:"Sizzling fried rice served with fresh juice" },
+      { name:"Al Mandi Platter", price:"AED 45", cat:["all","indian"], img:"mandi.jpg", desc:"Traditional mandi rice with roasted meat" },
+      { name:"Ghee Roast", price:"AED 22", cat:["all","kerala","breakfast"], img:"meal.jpg", desc:"Crispy dosa roasted in pure ghee" },
+      { name:"Masala Dosa", price:"AED 18", cat:["all","kerala","breakfast"], img:"meal.jpg", desc:"Rice crepe with spiced potato filling" },
+      { name:"Mango Juice", price:"AED 8", cat:["all"], img:"drink.jpg", desc:"Fresh mango juice" },
+    ];
+
+    function renderMenu(filter) {
+      const grid = document.getElementById('menu-grid');
+      grid.innerHTML = '';
+      const filtered = filter === 'all' ? menuItems : menuItems.filter(i => i.cat.includes(filter));
+      filtered.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'menu-card card rounded-2xl';
+        card.innerHTML = `
+          <div class="relative h-48 bg-cream-200">
+            <img src="${item.img}" alt="${item.name}" loading="lazy" decoding="async"
+                 style="width:100%;height:100%;object-fit:cover;display:block;"
+                 onerror="this.remove();">
+            <div class="img-missing" id="ph-${item.name.replace(/\s+/g,'')}">
+              <i class="fa-solid fa-bowl-food text-2xl text-gold-600"></i>
+              <div class="name">${item.name}</div>
+              <div class="file">Save photo as <b>${item.img}</b></div>
+            </div>
+            <div class="absolute top-3 right-3 bg-gradient-to-r from-gold-500 to-gold-600 text-white px-3 py-1.5 rounded-lg font-bold text-[11px] shadow-lg">${item.price}</div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-slate-900 text-lg mb-1">${item.name}</h3>
+            <p class="text-slate-500 text-sm">${item.desc}</p>
+          </div>
+        `;
+        grid.appendChild(card);
+
+        const img = card.querySelector('img');
+        img.addEventListener('load', () => {
+          const ph = document.getElementById('ph-' + item.name.replace(/\s+/g,''));
+          if (ph) ph.style.display = 'none';
+        });
+      });
+    }
+
+    /* ==================== REVIEWS (ALWAYS VISIBLE) ==================== */
+    const reviews = [
+      { name:"ashik ashraf", badge:"Local Guide · 14 reviews · 2 photos", time:"5 months ago", rating:5, text:"Poor experience. The mango juice taste was not good, and even after requesting a replacement there was no response. We ended up leaving and paying anyway. Disappointing service." },
+      { name:"Deny Chery", badge:"Local Guide · 180 reviews · 81 photos", time:"6 months ago", rating:5, text:"The food quality and portion sizes are good, and the ambiance is decent. Outdoor seating is available, but since many people use that area for smoking, it may not be the best option. The menu primarily offers Indian (Kerala) and Chinese cuisine." },
+      { name:"Jester Thomas", badge:"Local Guide · 140 reviews · 1,116 photos", time:"6 years ago", rating:5, text:"Small restaurant with tasty foods. Tried Appam beef and fish briyani tasty and fresh. They have outdoor seating and family seating also. Good one 😊" },
+    ];
+
+    function renderReviews() {
+      const grid = document.getElementById('reviews-grid');
+      grid.innerHTML = '';
+      reviews.forEach(r => {
+        const card = document.createElement('div');
+        card.className = 'card rounded-2xl p-6';
+        card.innerHTML = `
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <div class="font-semibold text-slate-900">${r.name}</div>
+              <div class="text-[11px] text-slate-400">${r.badge}</div>
+            </div>
+            <div class="text-slate-400 text-[11px]">${r.time}</div>
+          </div>
+          <div class="flex items-end gap-1 mb-4">
+            ${Array.from({length:5},(_,k)=>`<span class="star-fill text-xs">${k<r.rating?'★':'☆'}</span>`).join('')}
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">${r.text}</p>
+          <div class="flex items-center gap-3 text-[11px] text-slate-400">
+            <button class="hover:text-gold-600 transition">Like</button>
+            <button class="hover:text-gold-600 transition">Share</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    /* ==================== TABS ==================== */
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('tab-active'));
+        btn.classList.add('tab-active');
+        renderMenu(btn.dataset.cat);
+      });
+    });
+
+    /* ==================== NAV ==================== */
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('shadow-lg', window.scrollY > 40);
+    });
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    renderMenu('all');
+    renderReviews();
+  </script>
+</body>
+</html>
